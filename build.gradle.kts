@@ -8,6 +8,7 @@ subprojects {
   }
   dependencies {
     "api"("com.google.guava:guava:21.0")
+    implementation("com.squareup.okhttp3", "okhttp", "2.7.5")
   }
 
   configure<PublishingExtension> {

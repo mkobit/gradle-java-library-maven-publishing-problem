@@ -3,5 +3,6 @@ if (project.hasProperty('useKts')) {
 } else {
   dependencies {
     api group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
   }
 }

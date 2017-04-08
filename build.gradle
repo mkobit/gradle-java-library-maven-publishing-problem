@@ -46,6 +46,7 @@ if (project.hasProperty('useKts')) {
   project(':invalid-library-example') {
     dependencies {
       api group: 'com.google.inject', name: 'guice', version: '4.0'
+      implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '2.7.5'
     }
   }
 }
