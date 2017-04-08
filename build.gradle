@@ -1,3 +1,17 @@
+plugins {
+  id "com.gradle.build-scan" version "1.6"
+}
+
+buildScan {
+  licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+  licenseAgree = 'yes'
+  if (project.hasProperty('useKts')) {
+    tag('With KTS')
+  } else {
+    tag('With Groovy')
+  }
+}
+
 allprojects {
   group = 'mkobit.example'
   version = '1.0.0'

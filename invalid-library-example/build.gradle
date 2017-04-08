@@ -1,0 +1,7 @@
+if (project.hasProperty('useKts')) {
+  apply from: 'build.gradle.kts'
+} else {
+  dependencies {
+    api group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+  }
+}
