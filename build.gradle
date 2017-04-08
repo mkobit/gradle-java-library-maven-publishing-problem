@@ -1,0 +1,38 @@
+allprojects {
+  group = 'mkobit.example'
+  version = '1.0.0'
+  repositories {
+    jcenter()
+  }
+}
+
+wrapper {
+  gradleVersion = '3.5-rc-3'
+}
+
+if (project.hasProperty('useKts')) {
+  apply from: 'build.gradle.kts'
+} else {
+  subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+    dependencies {
+      api group: 'com.google.guava', name: 'guava', version: '21.0'
+    }
+
+    publishing {
+      publications {
+        mavenJavaLibrary(MavenPublication) {
+          from components.java
+        }
+      }
+    }
+  }
+
+  project(':invalid-library-example') {
+    dependencies {
+      api group: 'com.google.inject', name: 'guice', version: '4.0'
+    }
+  }
+}
+

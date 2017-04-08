@@ -1,0 +1,3 @@
+include 'invalid-library-example'
+
+rootProject.name = 'gradle-java-library-maven-publishing-problem'
