@@ -24,3 +24,4 @@ dependencies {
   "api"("com.google.inject:guice:4.0")
   implementation("com.squareup.okhttp3", "okhttp", "3.6.0")
 }
+applyFrom("dependencies.gradle.kts")

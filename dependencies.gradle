@@ -1,0 +1,4 @@
+dependencies {
+  api group: 'org.slf4j', name: 'slf4j-api', version: '1.7.7'
+  implementation "junit:junit:4.12"
+}
