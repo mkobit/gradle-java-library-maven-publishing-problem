@@ -27,27 +27,26 @@ wrapper {
 if (project.hasProperty('useKts')) {
   apply from: 'build.gradle.kts'
 } else {
-  subprojects {
-    apply plugin: 'java-library'
-    apply plugin: 'maven-publish'
-    dependencies {
-      api group: 'com.google.guava', name: 'guava', version: '21.0'
-    }
+  apply plugin: 'java-library'
+  apply plugin: 'maven-publish'
+  logger.lifecycle('Applying dependencies before publication creation')
+  dependencies {
+    api group: 'com.google.guava', name: 'guava', version: '21.0'
+    api("org.apache.commons:commons-lang:3.3.5")
+    implementation group: "org.apache.httpcomponents", name: "httpclient", version: "4.5.3"
+  }
 
-    publishing {
-      publications {
-        mavenJavaLibrary(MavenPublication) {
-          from components.java
-        }
+  publishing {
+    publications {
+      mavenJavaLibrary(MavenPublication) {
+        from components.java
       }
     }
   }
-
-  project(':invalid-library-example') {
-    dependencies {
-      api group: 'com.google.inject', name: 'guice', version: '4.0'
-      implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.6.0'
-    }
+  logger.lifecycle('Applying dependencies after publication creation')
+  dependencies {
+    api group: 'com.google.inject', name: 'guice', version: '4.0'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.6.0'
   }
 }
 
